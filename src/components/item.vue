@@ -1,15 +1,12 @@
 <template>
   <div>
-    item
+    item nr: {{ $route.params.id }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'item',
-  props: {
-    msg: String
-  }
+  name: 'item'
 }
 </script>
 

@@ -5,7 +5,7 @@
                 <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
                     <md-icon>menu</md-icon>
                 </md-button>
-                <span class="md-title">My Title</span>
+                <span class="md-title">Menu</span>
             </md-app-toolbar>
 
             <md-app-drawer :md-active.sync="menuVisible">
@@ -13,12 +13,7 @@
                 <md-list>
                     <md-list-item>
                         <md-icon>move_to_inbox</md-icon>
-                        <span class="md-list-item-text"><router-link to="/items">Items</router-link></span>
-                    </md-list-item>
-
-                    <md-list-item>
-                        <md-icon>send</md-icon>
-                        <span class="md-list-item-text">Sent Mail</span>
+                        <span class="md-list-item-text"><router-link to="/">Home</router-link></span>
                     </md-list-item>
                 </md-list>
             </md-app-drawer>
