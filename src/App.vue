@@ -5,14 +5,14 @@
                 <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
                     <md-icon>menu</md-icon>
                 </md-button>
-                <span class="md-title">Menu</span>
+                <span class="md-title">Shop</span>
             </md-app-toolbar>
 
             <md-app-drawer :md-active.sync="menuVisible">
-                <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
+                <md-toolbar id="navigation-header" class="md-transparent" md-elevation="0">Navigation</md-toolbar>
                 <md-list>
                     <md-list-item>
-                        <md-icon>move_to_inbox</md-icon>
+                        <md-icon>home</md-icon>
                         <span class="md-list-item-text"><router-link to="/">Home</router-link></span>
                     </md-list-item>
                 </md-list>
@@ -51,5 +51,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#navigation-header {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 </style>

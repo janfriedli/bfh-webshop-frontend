@@ -18,8 +18,7 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button>Action</md-button>
-        <md-button>Action</md-button>
+        <md-button class="md-raised md-primary">Buy</md-button>
       </md-card-actions>
     </md-card>
 </template>
