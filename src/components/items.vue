@@ -1,6 +1,6 @@
 <template>
     <div id="items" class="md-layout md-gutter">
-        <div class="md-layout-item md-size-33" v-for="item in items" v-bind:key="item.id" >
+        <div class="md-layout-item md-xsmall-size-100 md-small-size-50 md-size-33 md-xlarge-size-25" v-for="item in items" v-bind:key="item.id" >
             <product v-bind:product="item"></product>
         </div>
     </div>
