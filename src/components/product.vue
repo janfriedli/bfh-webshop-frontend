@@ -18,7 +18,7 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button class="md-raised md-primary">Buy</md-button>
+        <router-link :to="{ name: 'item', params: { id: product.id }}"><md-button class="md-raised md-primary">Buy</md-button></router-link>
       </md-card-actions>
     </md-card>
 </template>
