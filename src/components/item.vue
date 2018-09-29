@@ -35,7 +35,7 @@
 export default {
   name: 'item',
   data: () => ({
-    orderQuantity: 0,
+    orderQuantity: 0
   })
 }
 </script>

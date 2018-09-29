@@ -15,6 +15,10 @@
                         <md-icon>home</md-icon>
                         <span class="md-list-item-text"><router-link to="/">Home</router-link></span>
                     </md-list-item>
+                    <md-list-item>
+                        <md-icon>shopping_cart</md-icon>
+                        <span class="md-list-item-text"><router-link to="/cart">Cart</router-link></span>
+                    </md-list-item>
                 </md-list>
             </md-app-drawer>
 
