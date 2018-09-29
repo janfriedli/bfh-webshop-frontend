@@ -10,7 +10,7 @@
       </md-card-header>
 
       <md-card-media>
-        <img src="https://via.placeholder.com/350x150" alt="People">
+        <img src="https://via.placeholder.com/350x150" alt="Product">
       </md-card-media>
 
       <md-card-content>
