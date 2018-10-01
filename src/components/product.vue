@@ -6,7 +6,7 @@
         </md-avatar>
 
         <div class="md-title">{{product.title}}</div>
-        <div class="md-subhead">{{product.subtitle}}</div>
+        <div class="md-subhead">{{product.description}}</div>
       </md-card-header>
 
       <md-card-media>
