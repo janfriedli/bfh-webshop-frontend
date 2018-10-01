@@ -13,4 +13,13 @@ export default class ProductService {
   getProducts () {
     return axios.get(this.BACKEND_URL + 'product')
   }
+
+  /**
+   * get a single product by its id
+   * @param id
+   * @returns {AxiosPromise<any>}
+   */
+  getProduct (id) {
+    return axios.get(this.BACKEND_URL + 'product/' + id)
+  }
 }
