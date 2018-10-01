@@ -8,7 +8,7 @@
 
 <script>
 import Product from './product'
-import axios from 'axios'
+import ProductService from '../service/product-service'
 
 export default {
   name: 'items',
@@ -17,8 +17,8 @@ export default {
     items: []
   }),
   created () {
-    axios
-      .get('https://bfh-webshop-backend.herokuapp.com/v1/product')
+    let service = new ProductService()
+    service.getProducts()
       .then(response => (this.items = response.data))
       .catch(e => {
         console.error(e)
