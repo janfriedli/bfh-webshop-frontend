@@ -6,7 +6,7 @@
         </md-avatar>
 
         <div class="md-title">{{product.title}}</div>
-        <div class="md-subhead">{{product.description}}</div>
+        <div class="md-subhead">Subtitle</div>
       </md-card-header>
 
       <md-card-media>
@@ -14,7 +14,7 @@
       </md-card-media>
 
       <md-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea nostrum.
+        {{product.description | truncate(150) }}
       </md-card-content>
 
       <md-card-actions>

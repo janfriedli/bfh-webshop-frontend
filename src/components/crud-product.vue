@@ -10,7 +10,7 @@
 
         <md-field :class="messageClass">
           <label>Description</label>
-          <md-input v-model="product.description" required></md-input>
+          <md-textarea v-model="product.description"></md-textarea>
           <span class="md-error">API ERROR HERE</span>
         </md-field>
         <md-button v-on:click="createProduct(product)" v-if="!product.id" class="md-raised">Create</md-button>
