@@ -8,11 +8,29 @@
           <span class="md-error">API ERROR HERE</span>
         </md-field>
 
+        <md-field>
+          <label>Price</label>
+          <md-input v-model="product.price" type="number" required></md-input>
+          <md-icon>attach_money</md-icon>
+        </md-field>
+
+        <md-field>
+          <label>Quantity</label>
+          <md-input v-model="product.quantity" type="number" required></md-input>
+        </md-field>
+
         <md-field :class="messageClass">
           <label>Description</label>
-          <md-textarea v-model="product.description"></md-textarea>
+          <md-textarea v-model="product.description" required></md-textarea>
           <span class="md-error">API ERROR HERE</span>
         </md-field>
+
+        <md-field :class="messageClass">
+          <label>Image Url</label>
+          <md-input v-model="product.imgUrl" required></md-input>
+          <span class="md-error">API ERROR HERE</span>
+        </md-field>
+
         <md-button v-on:click="createProduct(product)" v-if="!product.id" class="md-raised">Create</md-button>
         <md-button v-on:click="updateProduct(product)" v-if="product.id" class="md-raised">Update</md-button>
       </div>
@@ -36,7 +54,10 @@ export default {
     product: {
       id: null,
       title: null,
-      description: null
+      description: null,
+      price: null,
+      quantity: null,
+      imgUrl: null
     }
   }),
   computed: {

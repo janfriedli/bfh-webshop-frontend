@@ -1,16 +1,12 @@
 <template>
     <md-card class="product-card">
       <md-card-header>
-        <md-avatar>
-          <img src="https://via.placeholder.com/350x150" alt="Avatar">
-        </md-avatar>
-
         <div class="md-title">{{product.title}}</div>
-        <div class="md-subhead">Subtitle</div>
+        <div class="md-subhead">{{product.price}} BTC</div>
       </md-card-header>
 
       <md-card-media>
-        <img src="https://via.placeholder.com/350x150" alt="Product">
+        <img v-bind:src="product.imgUrl" alt="Product">
       </md-card-media>
 
       <md-card-content>
