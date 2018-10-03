@@ -6,7 +6,7 @@
       </md-card-header>
 
       <md-card-media>
-        <img v-bind:src="product.imgUrl" alt="Product">
+        <img v-bind:src="product.img_url" alt="Product">
       </md-card-media>
 
       <md-card-content>

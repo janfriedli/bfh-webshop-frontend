@@ -2,7 +2,7 @@
     <md-card v-if="item" class="md-card-example">
       <md-card-area md-inset>
         <md-card-media md-ratio="16:9">
-          <img v-bind:src="item.imgUrl" :alt="item.title">
+          <img v-bind:src="item.img_url" :alt="item.title">
         </md-card-media>
 
         <md-card-header>
@@ -35,7 +35,6 @@ import ProductService from '../service/product-service'
 export default {
   name: 'item',
   data: () => ({
-    orderQuantity: 0,
     item: null
   }),
   created () {

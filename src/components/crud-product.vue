@@ -27,7 +27,7 @@
 
         <md-field :class="messageClass">
           <label>Image Url</label>
-          <md-input v-model="product.imgUrl" required></md-input>
+          <md-input v-model="product.img_url" required></md-input>
           <span class="md-error">API ERROR HERE</span>
         </md-field>
 
@@ -57,7 +57,7 @@ export default {
       description: null,
       price: null,
       quantity: null,
-      imgUrl: null
+      img_url: null
     }
   }),
   computed: {
