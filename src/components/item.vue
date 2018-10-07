@@ -19,12 +19,15 @@
       </md-card-area>
 
       <md-card-content>
-        <md-icon>loupe</md-icon>
         <span>{{item.quantity}} Available</span>
+        <md-field>
+          <label>Quantity</label>
+          <md-input v-model="buyerQuantity" type="number"></md-input>
+        </md-field>
       </md-card-content>
 
       <md-card-actions>
-        <md-button class="md-primary md-raised">Add to Cart</md-button>
+        <md-button @click="addToCart(item, buyerQuantity)" class="md-primary md-raised">Add to Cart</md-button>
       </md-card-actions>
     </md-card>
 </template>
@@ -35,8 +38,29 @@ import ProductService from '../service/product-service'
 export default {
   name: 'item',
   data: () => ({
-    item: null
+    item: null,
+    buyerQuantity: 1
   }),
+  methods: {
+    addToCart: function (product, buyerQuantity) {
+      let cart = JSON.parse(localStorage.getItem('cart'))
+
+      if (cart === null) {
+        cart = {}
+      }
+
+      if (cart[product.id]) {
+        cart[product.id].quantity = parseInt(cart[product.id].quantity) + parseInt(buyerQuantity)
+      } else {
+        cart[product.id] = {
+          product: product,
+          quantity: buyerQuantity
+        }
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  },
   created () {
     let service = new ProductService()
     service.getProduct(this.$route.params.id)
