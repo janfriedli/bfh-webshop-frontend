@@ -76,4 +76,11 @@ export default class CartService {
 
     return total
   }
+
+  /**
+   * empty cart
+   */
+  static clear() {
+    localStorage.setItem('cart', JSON.stringify({}))
+  }
 }

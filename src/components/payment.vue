@@ -57,6 +57,9 @@ export default {
 
     let downloadTimer = setInterval(function () {
       this.countdownSeconds -= 1
+      if (this.countdownSeconds < 45) {
+        CartService.clear()
+      }
       if (this.countdownSeconds <= 0) {
         clearInterval(downloadTimer)
       }
