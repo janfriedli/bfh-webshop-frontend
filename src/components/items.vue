@@ -6,7 +6,11 @@
             </div>
         </div>
         <div v-if="items && items.length === 0">
-            looool
+            <md-empty-state
+                    md-icon="shopping_basket"
+                    md-label="Create your first product">
+                <md-button :to="{ name: 'product' }" class="md-primary md-raised">Create first product</md-button>
+            </md-empty-state>
         </div>
     </section>
 </template>
