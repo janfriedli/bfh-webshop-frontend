@@ -80,7 +80,7 @@ export default class CartService {
   /**
    * empty cart
    */
-  static clear() {
+  static clear () {
     localStorage.setItem('cart', JSON.stringify({}))
   }
 }
