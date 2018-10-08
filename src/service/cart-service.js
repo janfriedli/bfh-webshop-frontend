@@ -52,6 +52,11 @@ export default class CartService {
     this.save(cart)
   }
 
+  /**
+   * save a cart into local storage
+   * @param cart
+   * @returns {Object}
+   */
   static save (cart) {
     localStorage.setItem('cart', JSON.stringify(cart))
     return this.getCart()
