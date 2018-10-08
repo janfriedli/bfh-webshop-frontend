@@ -33,7 +33,7 @@
           </md-card-area>
 
           <md-card-content class="md-layout">
-            <span class="md-layout-item bold">Total: {{getCartTotal()}} BTC </span>
+            <span class="md-layout-item bold">Total: {{total}} BTC </span>
             <router-link to="/payment">
               <md-button class="md-bottom-right md-raised">Checkout</md-button>
             </router-link>
@@ -50,24 +50,17 @@ import CartService from '../service/cart-service'
 export default {
   name: 'cart',
   data: () => ({
-    cart: {}
+    cart: {},
+    total: 0
   }),
   created () {
     this.cart = CartService.getCart()
+    this.total = CartService.getTotal()
   },
   methods: {
-    getCartTotal: function () {
-      let total = 0
-      for (let cartItem in this.cart) {
-        if (this.cart.hasOwnProperty(cartItem)) {
-          total = total + parseInt(this.cart[cartItem].quantity) * parseInt(this.cart[cartItem].product.price)
-        }
-      }
-
-      return total
-    },
     updateCart: function (cartItem) {
       CartService.updateCart(cartItem.product, cartItem.quantity)
+      this.total = CartService.getTotal()
     }
   }
 }
