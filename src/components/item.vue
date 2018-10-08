@@ -22,7 +22,7 @@
         <span>{{item.quantity}} Available</span>
         <md-field>
           <label>Quantity</label>
-          <md-input v-model="buyerQuantity" type="number"></md-input>
+          <md-input v-model.number="buyerQuantity" type="number"></md-input>
         </md-field>
       </md-card-content>
 
@@ -34,6 +34,7 @@
 
 <script>
 import ProductService from '../service/product-service'
+import CartService from '../service/cart-service'
 
 export default {
   name: 'item',
@@ -43,30 +44,27 @@ export default {
   }),
   methods: {
     addToCart: function (product, buyerQuantity) {
-      let cart = JSON.parse(localStorage.getItem('cart'))
-
-      if (cart === null) {
-        cart = {}
-      }
-
-      if (cart[product.id]) {
-        cart[product.id].quantity = parseInt(cart[product.id].quantity) + parseInt(buyerQuantity)
-      } else {
-        cart[product.id] = {
-          product: product,
-          quantity: buyerQuantity
-        }
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart))
+      CartService.addToCart(product, buyerQuantity)
+      this.$notify({
+        type: 'info',
+        position: 'top right',
+        group: 'notification',
+        title: 'Added',
+        text: product.title + ': ' + buyerQuantity
+      })
     }
   },
   created () {
-    let service = new ProductService()
-    service.getProduct(this.$route.params.id)
+    ProductService.getProduct(this.$route.params.id)
       .then(response => (this.item = response.data))
       .catch(e => {
-        console.error(e)
+        this.$notify({
+          type: 'warning',
+          position: 'top right',
+          group: 'notification',
+          title: 'Error',
+          text: 'Could not fetch the product'
+        })
       })
   }
 }

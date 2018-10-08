@@ -4,13 +4,13 @@ import axios from 'axios'
  * HTTP service to get product data
  */
 export default class ProductService {
-  BACKEND_URL = 'https://bfh-webshop-backend.herokuapp.com/v1/'
+  static BACKEND_URL = 'https://bfh-webshop-backend.herokuapp.com/v1/'
 
   /**
    * get All products
    * @returns {AxiosPromise<any>}
    */
-  getProducts () {
+  static getProducts () {
     return axios.get(this.BACKEND_URL + 'product')
   }
 
@@ -19,7 +19,7 @@ export default class ProductService {
    * @param id
    * @returns {AxiosPromise<any>}
    */
-  getProduct (id) {
+  static getProduct (id) {
     return axios.get(this.BACKEND_URL + 'product/' + id)
   }
 
@@ -28,7 +28,7 @@ export default class ProductService {
    * @param product
    * @returns {AxiosPromise<any>}
    */
-  createProduct (product) {
+  static createProduct (product) {
     return axios.post(this.BACKEND_URL + 'product', product)
   }
 
@@ -37,7 +37,7 @@ export default class ProductService {
    * @param product
    * @returns {AxiosPromise<any>}
    */
-  updateProduct (product) {
+  static updateProduct (product) {
     return axios.put(this.BACKEND_URL + 'product/' + product.id, product)
   }
 
@@ -46,7 +46,7 @@ export default class ProductService {
    * @param id
    * @returns {AxiosPromise}
    */
-  deleteProduct (id) {
+  static deleteProduct (id) {
     return axios.delete(this.BACKEND_URL + 'product/' + id)
   }
 }

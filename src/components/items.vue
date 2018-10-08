@@ -22,8 +22,7 @@ export default {
     items: null
   }),
   created () {
-    let service = new ProductService()
-    service.getProducts()
+    ProductService.getProducts()
       .then(response => (this.items = response.data))
       .catch(e => {
         console.error(e)

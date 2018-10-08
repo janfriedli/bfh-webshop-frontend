@@ -44,8 +44,8 @@
 </template>
 
 <script>
+// @todo implement validation
 import ProductService from '../service/product-service'
-let service = new ProductService()
 
 export default {
   name: 'crudProduct',
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     createProduct: function (product) {
-      service.createProduct(product)
+      ProductService.createProduct(product)
         .then(response => {
           this.product = response.data
           this.$notify({
@@ -91,7 +91,7 @@ export default {
         })
     },
     updateProduct: function (product) {
-      service.updateProduct(product)
+      ProductService.updateProduct(product)
         .then(response => {
           this.$notify({
             type: 'success',
@@ -112,7 +112,7 @@ export default {
         })
     },
     deleteProduct: function (id) {
-      service.deleteProduct(id)
+      ProductService.deleteProduct(id)
         .then(response => {
           this.$notify({
             type: 'success',
@@ -136,7 +136,7 @@ export default {
   },
   created () {
     if (this.$route.params.id) {
-      service.getProduct(this.$route.params.id)
+      ProductService.getProduct(this.$route.params.id)
         .then(response => (this.product = response.data))
         .catch(e => {
           console.error(e)
