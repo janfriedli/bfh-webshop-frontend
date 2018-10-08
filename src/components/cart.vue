@@ -34,7 +34,7 @@
 
           <md-card-content class="md-layout">
             <span class="md-layout-item bold">Total: {{getCartTotal()}} BTC </span>
-            <router-link to="/pay">
+            <router-link to="/payment">
               <md-button class="md-bottom-right md-raised">Checkout</md-button>
             </router-link>
           </md-card-content>

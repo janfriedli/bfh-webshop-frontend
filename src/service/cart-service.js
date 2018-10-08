@@ -12,7 +12,6 @@ export default class CartService {
     let cart = this.getCart()
 
     if (cart[product.id]) {
-      console.log(parseInt(cart[product.id].quantity), parseInt(buyerQuantity))
       cart[product.id].quantity = parseInt(cart[product.id].quantity) + parseInt(buyerQuantity)
     } else {
       cart[product.id] = {
@@ -60,5 +59,21 @@ export default class CartService {
   static save (cart) {
     localStorage.setItem('cart', JSON.stringify(cart))
     return this.getCart()
+  }
+
+  /**
+   * calculated the sum of the order
+   * @returns {number}
+   */
+  static getTotal () {
+    let total = 0
+    let cart = this.getCart()
+    for (let cartItem in cart) {
+      if (cart.hasOwnProperty(cartItem)) {
+        total = total + parseInt(cart[cartItem].quantity) * parseInt(cart[cartItem].product.price)
+      }
+    }
+
+    return total
   }
 }
