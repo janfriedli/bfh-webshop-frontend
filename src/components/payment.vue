@@ -44,6 +44,7 @@
 
 <script>
 import CartService from '../service/cart-service'
+import OrderService from "../service/order-service";
 
 export default {
   name: 'Payment',
@@ -57,6 +58,24 @@ export default {
 
     let downloadTimer = setInterval(function () {
       this.countdownSeconds -= 1
+
+      if (this.countdownSeconds === 55) {
+        let orderInProgress = CartService.getOrderInProgress()
+        // well -> fake payment
+        orderInProgress.paid = true;
+        console.log(orderInProgress)
+        OrderService.updateOrder(orderInProgress)
+          .catch(e => {
+            this.$notify({
+              type: 'error',
+              position: 'top right',
+              group: 'notification',
+              title: 'Error',
+              text: 'Payment failed!'
+            })
+          })
+      }
+
       if (this.countdownSeconds < 45) {
         CartService.clear()
       }

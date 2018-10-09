@@ -114,6 +114,7 @@ export default {
       }
       OrderService.createOrder(this.order)
         .then(response => {
+          CartService.saveOrderInProgress(response.data)
           this.$router.push('payment')
         })
         .catch(e => {
