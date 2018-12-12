@@ -4,7 +4,7 @@ import axios from 'axios'
  * HTTP service to get order data
  */
 export default class OrderService {
-  static BACKEND_URL = 'https://bfh-webshop-backend.herokuapp.com/v1/'
+  static BACKEND_URL = 'http://localhost:8000/v1/'
 
   /**
    * get All orders

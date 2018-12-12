@@ -19,7 +19,7 @@
                         <md-icon>shopping_cart</md-icon>
                         <span class="md-list-item-text"><router-link to="/cart">Cart</router-link></span>
                     </md-list-item>
-                    <md-list-item>
+                    <md-list-item v-if="isLoggedIn()">
                         <md-icon>add</md-icon>
                         <span class="md-list-item-text"><router-link to="/product">Add product</router-link></span>
                     </md-list-item>
@@ -39,6 +39,7 @@ import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import UserService from './service/user-service'
 
 Vue.use(VueMaterial)
 
@@ -48,7 +49,12 @@ export default {
   },
   data: () => ({
     menuVisible: false
-  })
+  }),
+  methods: {
+    isLoggedIn: function () {
+      return UserService.isLoggedIn()
+    }
+  }
 }
 </script>
 

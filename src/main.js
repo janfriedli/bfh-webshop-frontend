@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import item from './components/item'
 import items from './components/items'
+import login from './components/login'
 import cart from './components/cart'
 import crudProduct from './components/crud-product'
 import Payment from './components/payment'
@@ -17,6 +18,7 @@ Vue.use(VueTruncate)
 const routes = [
   { name: 'item', path: '/item/:id', component: item },
   { name: 'items', path: '/', component: items },
+  { name: 'login', path: '/login', component: login },
   { name: 'cart', path: '/cart', component: cart },
   { name: 'product', path: '/product', component: crudProduct },
   { name: 'product', path: '/product/:id', component: crudProduct },

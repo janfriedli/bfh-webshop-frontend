@@ -44,7 +44,7 @@
 
 <script>
 import CartService from '../service/cart-service'
-import OrderService from "../service/order-service";
+import OrderService from '../service/order-service'
 
 export default {
   name: 'Payment',
@@ -62,7 +62,7 @@ export default {
       if (this.countdownSeconds === 55) {
         let orderInProgress = CartService.getOrderInProgress()
         // well -> fake payment
-        orderInProgress.paid = true;
+        orderInProgress.paid = true
         console.log(orderInProgress)
         OrderService.updateOrder(orderInProgress)
           .catch(e => {
