@@ -7,7 +7,8 @@ export default class UserService {
    * @returns {boolean}
    */
   static isLoggedIn () {
-    if (localStorage.getItem('user').hasOwnProperty('username')) {
+    const user = JSON.parse(localStorage.getItem('user'))
+    if (user) {
       return true
     }
 
