@@ -43,7 +43,17 @@ export default {
   }),
   methods: {
     login: function () {
-      UserService.login(this.username, this.password)
+      UserService.login(this.username, this.password).then(() => {
+        this.$router.push('items')
+      }).catch(() => {
+        this.$notify({
+          type: 'warn',
+          position: 'top right',
+          group: 'notification',
+          title: 'Error',
+          text: 'Login  Failed'
+        })
+      })
     }
   }
 }

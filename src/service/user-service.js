@@ -54,10 +54,10 @@ export default class UserService {
         if (response.status === 401) {
           // auto logout if 401 response returned from api
           this.logout()
+          return Promise.reject(new Error('Login failed'))
         }
-        else if (response.status === 200) {
 
-        }
+        return response
       }
     })
   }
