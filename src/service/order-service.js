@@ -1,5 +1,6 @@
 import axios from 'axios'
 import config from '../../config'
+import * as auth from '../_helpers/auth-header'
 
 /**
  * HTTP service to get order data
@@ -12,7 +13,7 @@ export default class OrderService {
    * @returns {AxiosPromise<any>}
    */
   static getOrders () {
-    return axios.get(this.BACKEND_URL + '/order')
+    return axios.get(this.BACKEND_URL + '/order', { headers: auth.authHeader() })
   }
 
   /**
@@ -21,7 +22,7 @@ export default class OrderService {
    * @returns {AxiosPromise<any>}
    */
   static getOrder (id) {
-    return axios.get(this.BACKEND_URL + '/order/' + id)
+    return axios.get(this.BACKEND_URL + '/order/' + id, { headers: auth.authHeader() })
   }
 
   /**
@@ -39,7 +40,7 @@ export default class OrderService {
    * @returns {AxiosPromise<any>}
    */
   static updateOrder (order) {
-    return axios.put(this.BACKEND_URL + '/order/' + order.id, order)
+    return axios.put(this.BACKEND_URL + '/order/' + order.id, order, { headers: auth.authHeader() })
   }
 
   /**
@@ -48,6 +49,6 @@ export default class OrderService {
    * @returns {AxiosPromise}
    */
   static deleteOrder (id) {
-    return axios.delete(this.BACKEND_URL + '/order/' + id)
+    return axios.delete(this.BACKEND_URL + '/order/' + id, { headers: auth.authHeader() })
   }
 }

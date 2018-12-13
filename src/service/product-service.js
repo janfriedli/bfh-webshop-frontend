@@ -1,5 +1,6 @@
 import axios from 'axios'
 import config from '../../config'
+import * as auth from '../_helpers/auth-header'
 
 /**
  * HTTP service to get product data
@@ -30,7 +31,7 @@ export default class ProductService {
    * @returns {AxiosPromise<any>}
    */
   static createProduct (product) {
-    return axios.post(this.BACKEND_URL + '/product', product)
+    return axios.post(this.BACKEND_URL + '/product', product, { headers: auth.authHeader() })
   }
 
   /**
@@ -39,7 +40,7 @@ export default class ProductService {
    * @returns {AxiosPromise<any>}
    */
   static updateProduct (product) {
-    return axios.put(this.BACKEND_URL + '/product/' + product.id, product)
+    return axios.put(this.BACKEND_URL + '/product/' + product.id, product, { headers: auth.authHeader() })
   }
 
   /**
@@ -48,6 +49,6 @@ export default class ProductService {
    * @returns {AxiosPromise}
    */
   static deleteProduct (id) {
-    return axios.delete(this.BACKEND_URL + '/product/' + id)
+    return axios.delete(this.BACKEND_URL + '/product/' + id, { headers: auth.authHeader() })
   }
 }
