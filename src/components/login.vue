@@ -44,7 +44,7 @@ export default {
   methods: {
     login: function () {
       UserService.login(this.username, this.password).then(() => {
-        this.$router.push('items')
+        this.$router.push({ name: 'items' })
       }).catch(() => {
         this.$notify({
           type: 'warn',
