@@ -23,6 +23,16 @@
                         <md-icon>add</md-icon>
                         <span class="md-list-item-text"><router-link to="/product">Add product</router-link></span>
                     </md-list-item>
+                    <md-list-item v-if="isLoggedIn()">
+                        <md-icon>open_in_new</md-icon>
+                            <span @click="logout()" class="md-list-item-text">
+                                <router-link to="#">Logout</router-link>
+                            </span>
+                    </md-list-item>
+                    <md-list-item v-if="!isLoggedIn()">
+                        <md-icon>input</md-icon>
+                        <span class="md-list-item-text"><router-link to="/login">Login</router-link></span>
+                    </md-list-item>
                 </md-list>
             </md-app-drawer>
 
@@ -53,6 +63,9 @@ export default {
   methods: {
     isLoggedIn: function () {
       return UserService.isLoggedIn()
+    },
+    logout: function () {
+      UserService.logout()
     }
   }
 }

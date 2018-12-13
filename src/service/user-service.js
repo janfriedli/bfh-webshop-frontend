@@ -49,12 +49,14 @@ export default class UserService {
     }
 
     // make a request to a  protected resource to test creds
-    return fetch(`${config.apiUrl}/product`, requestOptions).then((response) => {
+    return fetch(`${config.apiUrl}/order`, requestOptions).then((response) => {
       if (!response.ok) {
         if (response.status === 401) {
           // auto logout if 401 response returned from api
           this.logout()
-          location.reload(true)
+        }
+        else if (response.status === 200) {
+
         }
       }
     })

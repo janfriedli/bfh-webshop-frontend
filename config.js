@@ -1,3 +1,3 @@
 module.exports = {
-  apiUrl: 'https://bfh-webshop-backend.herokuapp.com/v1'
+  apiUrl: 'http://localhost:8000/v1'
 }
