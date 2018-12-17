@@ -81,7 +81,7 @@ export default class CartService {
    * save the most recent order
    * @param order
    */
-  static saveOrderInProgress(order) {
+  static saveOrderInProgress (order) {
     localStorage.setItem('orderInProgress', JSON.stringify(order))
   }
 
@@ -89,8 +89,8 @@ export default class CartService {
    * get the order in progress
    * @returns {any}
    */
-  static getOrderInProgress() {
-    return JSON.parse(localStorage.getItem('orderInProgress'));
+  static getOrderInProgress () {
+    return JSON.parse(localStorage.getItem('orderInProgress'))
   }
 
   /**
