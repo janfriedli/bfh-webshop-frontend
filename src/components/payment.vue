@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div class="md-layout md-gutter">
+  <section class="md-layout md-alignment-top-center">
+    <div class="md-layout md-gutter md-layout-item md-size-50 md-small-size-100">
       <div class="md-layout-item md-size-100">
         <md-card class="cart-card">
           <md-card-area md-inset>

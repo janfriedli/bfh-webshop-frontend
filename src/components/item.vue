@@ -1,5 +1,6 @@
 <template>
-    <md-card v-if="item" class="md-card-example">
+  <div class="md-layout md-alignment-top-center">
+    <md-card v-if="item" class="md-layout-item md-size-50 md-small-size-100e">
       <md-card-area md-inset>
         <md-card-media md-ratio="16:9">
           <img v-bind:src="item.img_url" :alt="item.title">
@@ -30,6 +31,7 @@
         <md-button @click="addToCart(item, buyerQuantity)" class="md-primary md-raised">Add to Cart</md-button>
       </md-card-actions>
     </md-card>
+  </div>
 </template>
 
 <script>
