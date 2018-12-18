@@ -33,6 +33,10 @@
                         <md-icon>input</md-icon>
                         <span class="md-list-item-text"><router-link to="/login">Login</router-link></span>
                     </md-list-item>
+                    <md-list-item v-if="!isLoggedIn()">
+                        <md-icon>add</md-icon>
+                        <span class="md-list-item-text"><router-link to="/register">Register</router-link></span>
+                    </md-list-item>
                 </md-list>
             </md-app-drawer>
 
