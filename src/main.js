@@ -32,6 +32,11 @@ const messages = {
     overview: 'Overview',
     password: 'Password',
     createFirstProduct: 'Create your first product',
+    payment: 'Payment',
+    send: 'Send',
+    to: 'To',
+    seconds: 'Seconds',
+    paymentReceived: 'Payment Received',
     button: {
       goToItems: 'Go to items',
       create: 'Create',
@@ -70,7 +75,8 @@ const messages = {
       productNotDeleted: 'Failed deleting  product',
       added: 'Added',
       getProductFailed: 'Could not fetch the product',
-      loadingProductsFailed: 'Failed loading Products'
+      loadingProductsFailed: 'Failed loading Products',
+      paymentFailed: "The payment failed! try again later."
     }
   },
   de: {

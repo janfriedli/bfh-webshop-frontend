@@ -5,7 +5,7 @@
         <md-card class="cart-card">
           <md-card-area md-inset>
             <md-card-header>
-              <h2 class="md-title">Payment</h2>
+              <h2 class="md-title">{{ $t("payment") }}</h2>
             </md-card-header>
           </md-card-area>
 
@@ -15,12 +15,12 @@
                 <img id="qr-code" src="https://i.imgur.com/VpiJHvY.png" alt="QR Code">
               </md-card-media>
               <p>
-                Send <b>{{total}} BTC</b> to: 1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX
+                {{ $t("send") }} <b>{{total}} BTC</b> {{ $t("to") }}: 1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX
               </p>
 
               <p>
                 <time class="accentuated">
-                  {{countdownSeconds}} seconds
+                  {{countdownSeconds}} {{ $t("seconds") }}
                 </time>
               </p>
             </div>
@@ -31,7 +31,7 @@
                   <img src="https://media.giphy.com/media/SsTcO55LJDBsI/giphy.gif">
                 </md-card-media>
                 <p>
-                  <span class="accentuated">Payment Received</span>
+                  <span class="accentuated">{{ $t("paymentReceived") }}</span>
                 </p>
               </div>
             </transition >
@@ -70,8 +70,8 @@ export default {
               type: 'error',
               position: 'top right',
               group: 'notification',
-              title: 'Error',
-              text: 'Payment failed!'
+              title: this.$i18n.t('error'),
+              text: this.$i18n.t('notification.paymentFailed')
             })
           })
       }
