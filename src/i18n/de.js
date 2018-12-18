@@ -75,6 +75,7 @@ export const de = {
     logout: 'Ausloggen',
     login: 'Login',
     register: 'Registrierung',
-    shop: 'Shop'
+    shop: 'Shop',
+    language: "Sprache"
   }
 }

@@ -61,6 +61,17 @@
                             </router-link>
                         </span>
                     </md-list-item>
+                    <md-list-item md-expand>
+                        <md-icon>language</md-icon>
+                        <span class="md-list-item-text">{{ $t("menu.language") }}</span>
+
+                        <md-list slot="md-expand">
+                            <md-list-item :key="lang" v-on:click="setLocale(lang)"
+                                          v-for="lang in getLocales()" class="md-inset">
+                                <router-link to="#">{{ lang }}</router-link>
+                            </md-list-item>
+                        </md-list>
+                    </md-list-item>
                 </md-list>
             </md-app-drawer>
 
@@ -78,6 +89,7 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import UserService from './service/user-service'
+import { messages } from './i18n/messages'
 
 Vue.use(VueMaterial)
 
@@ -94,6 +106,12 @@ export default {
     },
     logout: function () {
       UserService.logout()
+    },
+    getLocales: function () {
+      return Object.keys(messages)
+    },
+    setLocale: function (locale) {
+      this.$i18n.locale = locale
     }
   }
 }
