@@ -11,6 +11,7 @@ import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import VueTruncate from 'vue-truncate-filter'
 import VueI18n from 'vue-i18n'
+import { messages } from './i18n/messages'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -18,94 +19,9 @@ Vue.use(Notifications)
 Vue.use(VueTruncate)
 Vue.use(VueI18n)
 
-const messages = {
-  en: {
-    login: 'Login',
-    error: 'Error',
-    products: 'Products',
-    product: 'Product',
-    quantity: 'Quantity',
-    available: 'Available',
-    checkout: 'Checkout',
-    total: 'Total',
-    shippingInformation: 'Shipping Information',
-    overview: 'Overview',
-    password: 'Password',
-    createFirstProduct: 'Create your first product',
-    payment: 'Payment',
-    send: 'Send',
-    to: 'To',
-    seconds: 'Seconds',
-    paymentReceived: 'Payment Received',
-    register: 'Register',
-    button: {
-      goToItems: 'Go to items',
-      create: 'Create',
-      update: 'Update',
-      addCart: 'Add to Cart',
-      buy: 'Buy',
-      edit: 'Edit',
-      register: 'Register'
-    },
-    form: {
-      username: 'Username',
-      fullName: 'Full Name',
-      street: 'Street',
-      form: 'Zip',
-      country: 'Country',
-      title: 'Title',
-      price: 'Price',
-      quantity: 'Quantity',
-      description: 'Description',
-      imgUrl: 'Image Url',
-      password: 'Password',
-      passwordRepeat: 'Password Repeat',
-      email: 'Email'
-    },
-    validation: {
-      required: 'Required',
-      maxLength: 'Max {maxChars} characters',
-      minVal: 'Min {min}',
-      minLength: 'Min length: {minChars}',
-      maxVal: 'Max {max}',
-      noUrl: 'Not a valid URL',
-      notEqual: 'Passwords are not equal',
-      email: 'Not a valid email'
-    },
-    notification: {
-      error: 'Error',
-      loginFailed: 'Login Failed',
-      errorStoringOrder: 'Failed storing order',
-      productCreated: 'The new product has been created',
-      productNotCreated: 'Could not create Product',
-      productUpdated: 'The product has been updated',
-      productNotUpdated: 'Could not update Product',
-      productDeleted: 'Product has been deleted',
-      productNotDeleted: 'Failed deleting  product',
-      added: 'Added',
-      getProductFailed: 'Could not fetch the product',
-      loadingProductsFailed: 'Failed loading Products',
-      paymentFailed: "The payment failed! try again later.",
-      registrationFailed: 'Registration Failed'
-    },
-    menu: {
-      navigation: 'Navigation',
-      home: 'Home',
-      cart: 'Cart',
-      addProduct: 'Add Product',
-      logout: 'Logout',
-      login: 'Login',
-      register: 'Register',
-      shop: 'Shop'
-    }
-  },
-  de: {
-    login: 'Einloggen'
-  }
-}
-
 const i18n = new VueI18n({
   locale: 'en',
+  fallbackLocale: 'en',
   messages
 })
 
