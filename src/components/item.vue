@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout md-alignment-top-center">
-    <md-card v-if="item" class="md-layout-item md-size-50 md-small-size-100e">
+    <md-card v-if="item" class="md-layout-item md-size-50 md-small-size-100">
       <md-card-area md-inset>
         <md-card-media md-ratio="16:9">
           <img v-bind:src="item.img_url" :alt="item.title">
