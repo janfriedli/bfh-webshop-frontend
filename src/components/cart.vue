@@ -2,12 +2,12 @@
   <section>
     <div class="md-layout md-gutter">
       <div class="md-layout-item md-size-100">
-        <h2>Products</h2>
+        <h2>{{ $t("products") }}</h2>
         <div v-if="Object.keys(cart).length === 0">
           <md-empty-state
                   md-icon="note_add"
                   md-label="Add something to your cart">
-            <md-button :to="{ name: 'items' }" class="md-primary md-raised">Go to items</md-button>
+            <md-button :to="{ name: 'items' }" class="md-primary md-raised">{{ $t("button.goToItems") }}</md-button>
           </md-empty-state>
         </div>
         <md-card v-for="cartItem in cart" :key="cartItem.id" class="cart-card">
@@ -22,9 +22,9 @@
           </md-card-area>
 
           <md-card-content>
-            <span>{{cartItem.product.quantity}} Available</span>
+            <span>{{cartItem.product.quantity}} {{ $t("available") }}</span>
             <md-field>
-              <label>Quantity</label>
+              <label>{{ $t("quantity") }}</label>
               <md-input v-on:change="updateCart(cartItem)" v-model.number="cartItem.quantity" type="number"></md-input>
             </md-field>
           </md-card-content>
@@ -33,37 +33,37 @@
     </div>
     <div v-if="Object.keys(cart).length !== 0" class="md-layout md-gutter">
       <form novalidate @submit.prevent="validateCart()" class="md-layout-item md-size-100">
-        <h2>Checkout</h2>
+        <h2>{{ $t("checkout") }}</h2>
         <md-card class="cart-card">
           <md-card-area md-inset>
             <md-card-header>
-              <h2 class="md-title">Shipping Information</h2>
+              <h2 class="md-title">{{ $t("shippingInformation") }}</h2>
             </md-card-header>
           </md-card-area>
 
           <md-card-content class="md-layout">
             <md-field :class="getValidationClass('fullname')">
-              <label>Full name</label>
+              <label>{{ $t("fullName") }}</label>
               <md-input v-model="form.fullname"></md-input>
-              <span class="md-error" v-if="!$v.form.fullname.required">Required</span>
+              <span class="md-error" v-if="!$v.form.fullname.required">{{ $t("validation.required") }}</span>
             </md-field>
 
             <md-field :class="getValidationClass('street')">
-              <label>Street</label>
+              <label>{{ $t("form.street") }}</label>
               <md-input v-model="form.street"></md-input>
-              <span class="md-error" v-if="!$v.form.street.required">Required</span>
+              <span class="md-error" v-if="!$v.form.street.required">{{ $t("validation.required") }}</span>
             </md-field>
 
             <md-field :class="getValidationClass('zip')">
-              <label>Zip</label>
+              <label>{{ $t("form.zip") }}</label>
               <md-input v-model="form.zip"></md-input>
-              <span class="md-error" v-if="!$v.form.zip.required">Required</span>
+              <span class="md-error" v-if="!$v.form.zip.required">{{ $t("validation.required") }}</span>
             </md-field>
 
             <md-field :class="getValidationClass('country')">
-              <label>Country</label>
+              <label>{{ $t("form.country") }}</label>
               <md-input v-model="form.country"></md-input>
-              <span class="md-error" v-if="!$v.form.country.required">Required</span>
+              <span class="md-error" v-if="!$v.form.country.required">{{ $t("validation.required") }}</span>
             </md-field>
           </md-card-content>
         </md-card>
@@ -71,13 +71,13 @@
         <md-card class="md-primary cart-card" id="checkout-card">
           <md-card-area md-inset>
             <md-card-header>
-              <h2 class="md-title">Overview</h2>
+              <h2 class="md-title">{{ $t("overview") }}</h2>
             </md-card-header>
           </md-card-area>
 
           <md-card-content class="md-layout">
-            <span class="md-layout-item bold">Total: {{total}} BTC </span>
-            <md-button type="submit" class="md-bottom-right md-raised md-primary">Checkout</md-button>
+            <span class="md-layout-item bold">{{ $t("total") }}Total: {{total}} BTC </span>
+            <md-button type="submit" class="md-bottom-right md-raised md-primary">{{ $t("checkout") }}</md-button>
           </md-card-content>
         </md-card>
       </form>
@@ -136,8 +136,8 @@ export default {
             type: 'warn',
             position: 'top right',
             group: 'notification',
-            title: 'Error',
-            text: 'Could store order'
+            title: this.$i18n.t('notification.error'),
+            text: this.$i18n.t('notification.errorStoringOrder')
           })
         })
     },

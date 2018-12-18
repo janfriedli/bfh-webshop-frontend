@@ -22,18 +22,33 @@ const messages = {
   en: {
     login: 'Login',
     error: 'Error',
+    products: 'Products',
+    quantity: 'Quantity',
+    available: 'Available',
+    checkout: 'Checkout',
+    total: 'Total',
+    shippingInformation: 'Shipping Information',
+    overview: 'Overview',
+    password: 'Password',
+    button: {
+      goToItems: 'Go to items'
+    },
     form: {
-      username: 'Username'
+      username: 'Username',
+      fullName: 'Full Name',
+      street: 'Street',
+      form: 'Zip',
+      country: 'Country'
     },
     validation: {
       required: 'Required',
       maxLength: 'Max {maxChars} characters',
-      minLength: 'Min length: {minChars}',
-      password: 'Password'
+      minLength: 'Min length: {minChars}'
     },
     notification: {
       error: 'Error',
-      loginFailed: 'Login Failed'
+      loginFailed: 'Login Failed',
+      errorStoringOrder: 'Failed storing order'
     }
   },
   de: {

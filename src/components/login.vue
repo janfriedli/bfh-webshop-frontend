@@ -23,7 +23,7 @@
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('password')">
-                <label for="password">{{ $t("validation.password") }}</label>
+                <label for="password">{{ $t("password") }}</label>
                 <md-input type="password" name="password" id="password"
                           autocomplete="password" v-model="form.password"/>
                 <span class="md-error" v-if="!$v.form.password.minLength">
