@@ -34,7 +34,8 @@ const messages = {
     button: {
       goToItems: 'Go to items',
       create: 'Create',
-      update: 'Update'
+      update: 'Update',
+      addCart: 'Add to Cart'
     },
     form: {
       username: 'Username',
@@ -65,7 +66,9 @@ const messages = {
       productUpdated: 'The product has been updated',
       productNotUpdated: 'Could not update Product',
       productDeleted: 'Product has been deleted',
-      productNotDeleted: 'Failed deleting  product'
+      productNotDeleted: 'Failed deleting  product',
+      added: 'Added',
+      getProductFailed: 'Could not fetch the product'
     }
   },
   de: {

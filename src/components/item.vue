@@ -20,7 +20,7 @@
       </md-card-area>
 
       <md-card-content>
-        <span>{{item.quantity}} Available</span>
+        <span>{{item.quantity}} {{ $t("available") }}</span>
         <md-field>
           <label>Quantity</label>
           <md-input v-model.number="buyerQuantity" type="number"></md-input>
@@ -28,7 +28,9 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button @click="addToCart(item, buyerQuantity)" class="md-primary md-raised">Add to Cart</md-button>
+        <md-button @click="addToCart(item, buyerQuantity)" class="md-primary md-raised">
+          {{ $t("button.addCart") }}
+        </md-button>
       </md-card-actions>
     </md-card>
   </div>
@@ -51,7 +53,7 @@ export default {
         type: 'info',
         position: 'top right',
         group: 'notification',
-        title: 'Added',
+        title: this.$i18n.t('notification.added'),
         text: product.title + ': ' + buyerQuantity
       })
     }
@@ -64,8 +66,8 @@ export default {
           type: 'warning',
           position: 'top right',
           group: 'notification',
-          title: 'Error',
-          text: 'Could not fetch the product'
+          title: this.$i18n.t('error'),
+          text: this.$i18n.t('notification.getProductFailed')
         })
       })
   }

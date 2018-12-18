@@ -130,7 +130,7 @@ export default {
             position: 'top right',
             group: 'notification',
             title: this.$i18n.t('error'),
-            text:  this.$i18n.t('notification.productNotUpdated')
+            text: this.$i18n.t('notification.productNotUpdated')
           })
         })
     },
