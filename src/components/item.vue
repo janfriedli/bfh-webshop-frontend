@@ -22,7 +22,7 @@
       <md-card-content>
         <span>{{item.quantity}} {{ $t("available") }}</span>
         <md-field>
-          <label>Quantity</label>
+          <label>{{ $t("quantity") }}</label>
           <md-input v-model.number="buyerQuantity" type="number"></md-input>
         </md-field>
       </md-card-content>

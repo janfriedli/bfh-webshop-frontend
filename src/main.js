@@ -31,6 +31,7 @@ const messages = {
     shippingInformation: 'Shipping Information',
     overview: 'Overview',
     password: 'Password',
+    createFirstProduct: 'Create your first product',
     button: {
       goToItems: 'Go to items',
       create: 'Create',
@@ -68,7 +69,8 @@ const messages = {
       productDeleted: 'Product has been deleted',
       productNotDeleted: 'Failed deleting  product',
       added: 'Added',
-      getProductFailed: 'Could not fetch the product'
+      getProductFailed: 'Could not fetch the product',
+      loadingProductsFailed: 'Failed loading Products'
     }
   },
   de: {
