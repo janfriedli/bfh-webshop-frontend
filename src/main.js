@@ -10,11 +10,39 @@ import register from './components/register'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import VueTruncate from 'vue-truncate-filter'
+import VueI18n from 'vue-i18n'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(Notifications)
 Vue.use(VueTruncate)
+Vue.use(VueI18n)
+
+const messages = {
+  en: {
+    login: 'Login',
+    form: {
+      username: 'Username'
+    },
+    validation: {
+      required: 'Required',
+      maxLength: 'Max {maxChars} characters',
+      minLength: 'Min length: {minChars}',
+      password: 'Password'
+    },
+    notification: {
+
+    }
+  },
+  de: {
+    login: 'Einloggen'
+  }
+}
+
+const i18n = new VueI18n({
+  locale: 'en',
+  messages
+})
 
 const routes = [
   { name: 'item', path: '/item/:id', component: item },
@@ -33,5 +61,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  i18n
 }).$mount('#app')

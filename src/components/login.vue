@@ -3,27 +3,35 @@
     <form novalidate @submit.prevent="validateLogin()" class="md-layout md-alignment-top-center">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Login</div>
+          <div class="md-title">{{ $t("login") }}</div>
         </md-card-header>
 
         <md-card-content>
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('username')">
-                <label for="username">Username</label>
-                <md-input  name="username" id="username" autocomplete="given-name" v-model="form.username" :disabled="loginProcessing"/>
-                <span class="md-error" v-if="!$v.form.username.required">The username is required</span>
-                <span class="md-error" v-else-if="!$v.form.username.maxLength">Too long</span>
+                <label for="username">{{ $t("form.username") }}</label>
+                <md-input  name="username" id="username"
+                           autocomplete="given-name" v-model="form.username" :disabled="loginProcessing"/>
+                <span class="md-error" v-if="!$v.form.username.required">{{ $t("validation.required") }}</span>
+                <span class="md-error" v-else-if="!$v.form.username.maxLength">
+                  {{ $t("validation.maxLength", { maxChars: 25  }) }}
+                </span>
               </md-field>
             </div>
           </div>
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('password')">
-                <label for="password">Password</label>
-                <md-input type="password" name="password" id="password" autocomplete="password" v-model="form.password"/>
-                <span class="md-error" v-if="!$v.form.password.minLength">Min length 8</span>
-                <span class="md-error" v-else-if="!$v.form.password.maxLength">Too long</span>
+                <label for="password">{{ $t("validation.password") }}</label>
+                <md-input type="password" name="password" id="password"
+                          autocomplete="password" v-model="form.password"/>
+                <span class="md-error" v-if="!$v.form.password.minLength">
+                  {{ $t("validation.minLength", { minChars: 8  }) }}
+                </span>
+                <span class="md-error" v-else-if="!$v.form.password.maxLength">
+                  {{ $t("validation.maxLength", { maxChars: 64  }) }}
+                </span>
               </md-field>
             </div>
           </div>
@@ -31,7 +39,9 @@
         </md-card-content>
 
         <md-card-actions>
-          <md-button  type="submit" v-if="!loginProcessing" class="md-dense md-raised md-primary">Login</md-button>
+          <md-button  type="submit" v-if="!loginProcessing" class="md-dense md-raised md-primary">
+            {{ $t("login") }}
+          </md-button>
         </md-card-actions>
       </md-card>
     </form>
