@@ -77,8 +77,8 @@ export default {
           type: 'warn',
           position: 'top right',
           group: 'notification',
-          title: 'Error',
-          text: 'Login  Failed'
+          title: this.$i18n.t('notification.error'),
+          text: this.$i18n.t('notification.loginFailed')
         })
       }).finally(() => {
         this.loginProcessing = false

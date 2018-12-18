@@ -21,6 +21,7 @@ Vue.use(VueI18n)
 const messages = {
   en: {
     login: 'Login',
+    error: 'Error',
     form: {
       username: 'Username'
     },
@@ -31,7 +32,8 @@ const messages = {
       password: 'Password'
     },
     notification: {
-
+      error: 'Error',
+      loginFailed: 'Login Failed'
     }
   },
   de: {
