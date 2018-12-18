@@ -77,7 +77,7 @@
 
           <md-card-content class="md-layout">
             <span class="md-layout-item bold">Total: {{total}} BTC </span>
-            <md-button type="submit" class="md-bottom-right md-raised">Checkout</md-button>
+            <md-button type="submit" class="md-bottom-right md-raised md-primary">Checkout</md-button>
           </md-card-content>
         </md-card>
       </form>

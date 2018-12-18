@@ -39,8 +39,8 @@
           <span class="md-error" v-else-if="!$v.form.img_url.url">Not a valid url</span>
         </md-field>
 
-        <md-button type="submit" v-if="!form.id" class="md-raised">Create</md-button>
-        <md-button type="submit" v-if="form.id" class="md-raised">Update</md-button>
+        <md-button type="submit" v-if="!form.id" class="md-dense md-bottom-right md-raised md-primary">Create</md-button>
+        <md-button type="submit" v-if="form.id" class="md-dense md-bottom-right md-raised md-primary">Update</md-button>
       </form>
     </div>
     <div v-if="form.id" class="md-layout md-gutter md-alignment-top-right">

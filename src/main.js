@@ -6,6 +6,7 @@ import login from './components/login'
 import cart from './components/cart'
 import crudProduct from './components/crud-product'
 import Payment from './components/payment'
+import register from './components/register'
 import VueRouter from 'vue-router'
 import Notifications from 'vue-notification'
 import VueTruncate from 'vue-truncate-filter'
@@ -22,7 +23,8 @@ const routes = [
   { name: 'cart', path: '/cart', component: cart },
   { name: 'product', path: '/product', component: crudProduct },
   { name: 'product', path: '/product/:id', component: crudProduct },
-  { name: 'payment', path: '/payment', component: Payment }
+  { name: 'payment', path: '/payment', component: Payment },
+  { name: 'register', path: '/register', component: register }
 ]
 
 const router = new VueRouter({

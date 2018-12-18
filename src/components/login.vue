@@ -16,7 +16,8 @@
                 <span class="md-error" v-else-if="!$v.form.username.maxLength">Too long</span>
               </md-field>
             </div>
-
+          </div>
+          <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('password')">
                 <label for="password">Password</label>
@@ -26,11 +27,11 @@
               </md-field>
             </div>
           </div>
+          <md-progress-bar md-mode="indeterminate" v-if="loginProcessing" />
         </md-card-content>
 
         <md-card-actions>
-          <md-progress-bar md-mode="indeterminate" v-if="loginProcessing" />
-          <md-button  type="submit" v-if="!loginProcessing" class="md-primary">Login</md-button>
+          <md-button  type="submit" v-if="!loginProcessing" class="md-dense md-raised md-primary">Login</md-button>
         </md-card-actions>
       </md-card>
     </form>

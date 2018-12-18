@@ -1,5 +1,6 @@
 import config from '../../config'
 import { authHeader } from '../_helpers/auth-header'
+import axios from 'axios'
 
 export default class UserService {
   /**
@@ -60,6 +61,15 @@ export default class UserService {
         return response
       }
     })
+  }
+
+  /**
+   * register a new user
+   * @param userData
+   * @returns {AxiosPromise<any>}
+   */
+  static register (userData) {
+    return axios.post(config.apiUrl + '/register', userData, { headers: authHeader() })
   }
 
   /**
