@@ -37,13 +37,15 @@ const messages = {
     to: 'To',
     seconds: 'Seconds',
     paymentReceived: 'Payment Received',
+    register: 'Register',
     button: {
       goToItems: 'Go to items',
       create: 'Create',
       update: 'Update',
       addCart: 'Add to Cart',
       buy: 'Buy',
-      edit: 'Edit'
+      edit: 'Edit',
+      register: 'Register'
     },
     form: {
       username: 'Username',
@@ -55,7 +57,10 @@ const messages = {
       price: 'Price',
       quantity: 'Quantity',
       description: 'Description',
-      imgUrl: 'Image Url'
+      imgUrl: 'Image Url',
+      password: 'Password',
+      passwordRepeat: 'Password Repeat',
+      email: 'Email'
     },
     validation: {
       required: 'Required',
@@ -63,7 +68,9 @@ const messages = {
       minVal: 'Min {min}',
       minLength: 'Min length: {minChars}',
       maxVal: 'Max {max}',
-      noUrl: 'Not a valid URL'
+      noUrl: 'Not a valid URL',
+      notEqual: 'Passwords are not equal',
+      email: 'Not a valid email'
     },
     notification: {
       error: 'Error',
@@ -78,7 +85,8 @@ const messages = {
       added: 'Added',
       getProductFailed: 'Could not fetch the product',
       loadingProductsFailed: 'Failed loading Products',
-      paymentFailed: "The payment failed! try again later."
+      paymentFailed: "The payment failed! try again later.",
+      registrationFailed: 'Registration Failed'
     }
   },
   de: {
