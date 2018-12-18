@@ -3,6 +3,13 @@
     <div class="md-layout md-gutter">
       <div class="md-layout-item md-size-100">
         <h2>Products</h2>
+        <div v-if="Object.keys(cart).length === 0">
+          <md-empty-state
+                  md-icon="note_add"
+                  md-label="Add something to your cart">
+            <md-button :to="{ name: 'items' }" class="md-primary md-raised">Go to items</md-button>
+          </md-empty-state>
+        </div>
         <md-card v-for="cartItem in cart" :key="cartItem.id" class="cart-card">
           <md-card-area md-inset>
             <md-card-header>
@@ -24,8 +31,8 @@
         </md-card>
       </div>
     </div>
-    <div class="md-layout md-gutter">
-      <div class="md-layout-item md-size-100">
+    <div v-if="Object.keys(cart).length !== 0" class="md-layout md-gutter">
+      <form novalidate @submit.prevent="validateCart()" class="md-layout-item md-size-100">
         <h2>Checkout</h2>
         <md-card class="cart-card">
           <md-card-area md-inset>
@@ -35,24 +42,28 @@
           </md-card-area>
 
           <md-card-content class="md-layout">
-            <md-field>
+            <md-field :class="getValidationClass('fullname')">
               <label>Full name</label>
-              <md-input v-model="order.fullname" required></md-input>
+              <md-input v-model="form.fullname"></md-input>
+              <span class="md-error" v-if="!$v.form.fullname.required">Required</span>
             </md-field>
 
-            <md-field>
+            <md-field :class="getValidationClass('street')">
               <label>Street</label>
-              <md-input v-model="order.street" required></md-input>
+              <md-input v-model="form.street"></md-input>
+              <span class="md-error" v-if="!$v.form.street.required">Required</span>
             </md-field>
 
-            <md-field>
+            <md-field :class="getValidationClass('zip')">
               <label>Zip</label>
-              <md-input v-model="order.zip" required></md-input>
+              <md-input v-model="form.zip"></md-input>
+              <span class="md-error" v-if="!$v.form.zip.required">Required</span>
             </md-field>
 
-            <md-field>
+            <md-field :class="getValidationClass('country')">
               <label>Country</label>
-              <md-input v-model="order.country" required></md-input>
+              <md-input v-model="form.country"></md-input>
+              <span class="md-error" v-if="!$v.form.country.required">Required</span>
             </md-field>
           </md-card-content>
         </md-card>
@@ -66,10 +77,10 @@
 
           <md-card-content class="md-layout">
             <span class="md-layout-item bold">Total: {{total}} BTC </span>
-            <md-button @click="postOrder()" class="md-bottom-right md-raised">Checkout</md-button>
+            <md-button type="submit" class="md-bottom-right md-raised">Checkout</md-button>
           </md-card-content>
         </md-card>
-      </div>
+      </form>
     </div>
   </section>
 </template>
@@ -77,13 +88,16 @@
 <script>
 import CartService from '../service/cart-service'
 import OrderService from '../service/order-service'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   name: 'cart',
+  mixins: [validationMixin],
   data: () => ({
     cart: {},
     total: 0,
-    order: {
+    form: {
       fullname: '',
       zip: null,
       street: '',
@@ -102,17 +116,17 @@ export default {
       this.total = CartService.getTotal()
     },
     postOrder: function () {
-      this.order.details = []
+      this.form.details = []
       const cart = CartService.getCart()
       for (let cartKey in cart) {
         if (cart.hasOwnProperty(cartKey)) {
-          this.order.details.push({
+          this.form.details.push({
             product: cart[cartKey].product,
             quantity: cart[cartKey].quantity
           })
         }
       }
-      OrderService.createOrder(this.order)
+      OrderService.createOrder(this.form)
         .then(response => {
           CartService.saveOrderInProgress(response.data)
           this.$router.push('payment')
@@ -126,6 +140,38 @@ export default {
             text: 'Could store order'
           })
         })
+    },
+    validateCart () {
+      this.$v.$touch()
+
+      if (!this.$v.$invalid) {
+        this.postOrder()
+      }
+    },
+    getValidationClass (fieldName) {
+      const field = this.$v.form[fieldName]
+
+      if (field) {
+        return {
+          'md-invalid': field.$invalid && field.$dirty
+        }
+      }
+    }
+  },
+  validations: {
+    form: {
+      fullname: {
+        required
+      },
+      zip: {
+        required
+      },
+      street: {
+        required
+      },
+      country: {
+        required
+      }
     }
   }
 }
