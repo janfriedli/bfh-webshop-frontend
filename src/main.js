@@ -41,7 +41,9 @@ const messages = {
       goToItems: 'Go to items',
       create: 'Create',
       update: 'Update',
-      addCart: 'Add to Cart'
+      addCart: 'Add to Cart',
+      buy: 'Buy',
+      edit: 'Edit'
     },
     form: {
       username: 'Username',
