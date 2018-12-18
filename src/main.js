@@ -87,6 +87,16 @@ const messages = {
       loadingProductsFailed: 'Failed loading Products',
       paymentFailed: "The payment failed! try again later.",
       registrationFailed: 'Registration Failed'
+    },
+    menu: {
+      navigation: 'Navigation',
+      home: 'Home',
+      cart: 'Cart',
+      addProduct: 'Add Product',
+      logout: 'Logout',
+      login: 'Login',
+      register: 'Register',
+      shop: 'Shop'
     }
   },
   de: {
