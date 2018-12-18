@@ -76,7 +76,7 @@
           </md-card-area>
 
           <md-card-content class="md-layout">
-            <span class="md-layout-item bold">{{ $t("total") }}Total: {{total}} BTC </span>
+            <span class="md-layout-item bold">{{ $t("total") }}: {{total}} BTC </span>
             <md-button type="submit" class="md-bottom-right md-raised md-primary">{{ $t("checkout") }}</md-button>
           </md-card-content>
         </md-card>

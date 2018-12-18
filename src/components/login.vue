@@ -15,7 +15,7 @@
                            autocomplete="given-name" v-model="form.username" :disabled="loginProcessing"/>
                 <span class="md-error" v-if="!$v.form.username.required">{{ $t("validation.required") }}</span>
                 <span class="md-error" v-else-if="!$v.form.username.maxLength">
-                  {{ $t("validation.maxLength", { maxChars: 25  }) }}
+                  {{ $t("validation.maxLength", { maxChars: 25 }) }}
                 </span>
               </md-field>
             </div>
@@ -27,10 +27,10 @@
                 <md-input type="password" name="password" id="password"
                           autocomplete="password" v-model="form.password"/>
                 <span class="md-error" v-if="!$v.form.password.minLength">
-                  {{ $t("validation.minLength", { minChars: 8  }) }}
+                  {{ $t("validation.minLength", { minChars: 8 }) }}
                 </span>
                 <span class="md-error" v-else-if="!$v.form.password.maxLength">
-                  {{ $t("validation.maxLength", { maxChars: 64  }) }}
+                  {{ $t("validation.maxLength", { maxChars: 64 }) }}
                 </span>
               </md-field>
             </div>

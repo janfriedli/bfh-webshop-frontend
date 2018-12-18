@@ -3,44 +3,58 @@
     <div class="md-layout md-gutter">
       <form novalidate @submit.prevent="validateProduct()" class="md-layout-item md-size-100">
         <md-field :class="getValidationClass('title')">
-          <label>Title</label>
-          <md-input v-model="form.title" required></md-input>
-          <span class="md-error" v-if="!$v.form.title.required">Required</span>
-          <span class="md-error" v-else-if="!$v.form.title.maxLength">Max 25 characters</span>
+          <label>{{ $t("form.title") }}</label>
+          <md-input v-model="form.title"></md-input>
+          <span class="md-error" v-if="!$v.form.title.required">{{ $t("validation.required") }}</span>
+          <span class="md-error" v-else-if="!$v.form.title.maxLength">
+            {{ $t("validation.maxLength", { maxChars: 25 }) }}
+          </span>
         </md-field>
 
         <md-field :class="getValidationClass('price')">
-          <label>Price</label>
-          <md-input v-model="form.price" type="number" required></md-input>
+          <label>{{ $t("form.price") }}</label>
+          <md-input v-model="form.price" type="number"></md-input>
           <md-icon>attach_money</md-icon>
-          <span class="md-error" v-if="!$v.form.price.required">Required</span>
-          <span class="md-error" v-else-if="!$v.form.price.minValue">Min 0</span>
-          <span class="md-error" v-else-if="!$v.form.price.maxValue">Max 16'700'000</span>
+          <span class="md-error" v-if="!$v.form.price.required">{{ $t("validation.required") }}</span>
+          <span class="md-error" v-else-if="!$v.form.price.minValue">
+            {{ $t("validation.minVal", { min: 0 }) }}
+          </span>
+          <span class="md-error" v-else-if="!$v.form.price.maxValue">
+            {{ $t("validation.maxVal", { max: "16'700'000" }) }}
+          </span>
         </md-field>
 
         <md-field :class="getValidationClass('quantity')">
-          <label>Quantity</label>
-          <md-input v-model="form.quantity" type="number" required></md-input>
-          <span class="md-error" v-if="!$v.form.quantity.minValue">Min 1</span>
-          <span class="md-error" v-else-if="!$v.form.quantity.required">Required</span>
+          <label>{{ $t("form.quantity") }}</label>
+          <md-input v-model="form.quantity" type="number"></md-input>
+          <span class="md-error" v-if="!$v.form.quantity.minValue">
+            {{ $t("validation.minVal", { min: 1 }) }}
+          </span>
+          <span class="md-error" v-else-if="!$v.form.quantity.required">{{ $t("validation.required") }}</span>
         </md-field>
 
         <md-field :class="getValidationClass('description')">
-          <label>Description</label>
-          <md-textarea v-model="form.description" required></md-textarea>
-          <span class="md-error" v-if="!$v.form.description.required">Required</span>
-          <span class="md-error" v-else-if="!$v.form.description.maxLength">Max 255 characters</span>
+          <label>{{ $t("form.description") }}</label>
+          <md-textarea v-model="form.description"></md-textarea>
+          <span class="md-error" v-if="!$v.form.description.required">{{ $t("validation.required") }}</span>
+          <span class="md-error" v-else-if="!$v.form.description.maxLength">
+            {{ $t("validation.maxLength", { maxChars: 255 }) }}
+          </span>
         </md-field>
 
         <md-field :class="getValidationClass('img_url')">
-          <label>Image Url</label>
-          <md-input v-model="form.img_url" required></md-input>
-          <span class="md-error" v-if="!$v.form.img_url.required">Required</span>
-          <span class="md-error" v-else-if="!$v.form.img_url.url">Not a valid url</span>
+          <label>{{ $t("form.imgUrl") }}</label>
+          <md-input v-model="form.img_url"></md-input>
+          <span class="md-error" v-if="!$v.form.img_url.required">{{ $t("validation.required") }}</span>
+          <span class="md-error" v-else-if="!$v.form.img_url.url">{{ $t("validation.noUrl") }}</span>
         </md-field>
 
-        <md-button type="submit" v-if="!form.id" class="md-dense md-bottom-right md-raised md-primary">Create</md-button>
-        <md-button type="submit" v-if="form.id" class="md-dense md-bottom-right md-raised md-primary">Update</md-button>
+        <md-button type="submit" v-if="!form.id" class="md-dense md-bottom-right md-raised md-primary">
+          {{ $t("button.create") }}
+        </md-button>
+        <md-button type="submit" v-if="form.id" class="md-dense md-bottom-right md-raised md-primary">
+          {{ $t("button.update") }}
+        </md-button>
       </form>
     </div>
     <div v-if="form.id" class="md-layout md-gutter md-alignment-top-right">
@@ -85,8 +99,8 @@ export default {
             type: 'success',
             position: 'top right',
             group: 'notification',
-            title: 'Product',
-            text: 'The new product has been created'
+            title: this.$i18n.t('product'),
+            text: this.$i18n.t('notification.productCreated')
           })
         })
         .catch(e => {
@@ -94,8 +108,8 @@ export default {
             type: 'warn',
             position: 'top right',
             group: 'notification',
-            title: 'Error',
-            text: 'Could not create Product'
+            title: this.$i18n.t('error'),
+            text: this.$i18n.t('notification.productNotCreated')
           })
         })
     },
@@ -106,8 +120,8 @@ export default {
             type: 'success',
             position: 'top right',
             group: 'notification',
-            title: 'Product',
-            text: 'The product has been updated'
+            title: this.$i18n.t('product'),
+            text: this.$i18n.t('notification.productUpdated')
           })
         })
         .catch(e => {
@@ -115,8 +129,8 @@ export default {
             type: 'warn',
             position: 'top right',
             group: 'notification',
-            title: 'Error',
-            text: 'Could not update Product'
+            title: this.$i18n.t('error'),
+            text:  this.$i18n.t('notification.productNotUpdated')
           })
         })
     },
@@ -127,8 +141,8 @@ export default {
             type: 'success',
             position: 'top right',
             group: 'notification',
-            title: 'Product',
-            text: 'Product has been deleted'
+            title: this.$i18n.t('product'),
+            text: this.$i18n.t('notification.productDeleted')
           })
           this.$router.push({ path: '/' })
         })
@@ -137,8 +151,8 @@ export default {
             type: 'warn',
             position: 'top right',
             group: 'notification',
-            title: 'Error',
-            text: 'Could not delete Product'
+            title: this.$i18n.t('error'),
+            text: this.$i18n.t('notification.productNotDeleted')
           })
         })
     },
