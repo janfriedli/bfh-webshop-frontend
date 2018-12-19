@@ -39,7 +39,8 @@ export const de = {
     imgUrl: 'Bild Url',
     password: 'Passwort',
     passwordRepeat: 'Passwort Wiederholung',
-    email: 'Email'
+    email: 'Email',
+    registerToken: 'Registrierungscode'
   },
   validation: {
     required: 'Erforderlich',
@@ -76,6 +77,6 @@ export const de = {
     login: 'Login',
     register: 'Registrierung',
     shop: 'Shop',
-    language: "Sprache"
+    language: 'Sprache'
   }
 }

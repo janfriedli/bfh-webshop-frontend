@@ -17,6 +17,9 @@
                 <span class="md-error" v-else-if="!$v.form.username.maxLength">
                   {{ $t("validation.maxVal", { max: 25 }) }}
                 </span>
+                <span class="md-error" v-else-if="!$v.form.username.minLength">
+                   {{ $t("validation.minVal", { min: 5 }) }}
+                </span>
               </md-field>
             </div>
           </div>
@@ -60,11 +63,10 @@
 
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('email')">
-                <label for="email">{{ $t("form.email") }}</label>
-                <md-input name="email" id="email" autocomplete="email" v-model="form.email"/>
-                <span class="md-error" v-if="!$v.form.email.email">{{ $t("validation.email") }}</span>
-                <span class="md-error" v-else-if="!$v.form.email.required">{{ $t("validation.required") }}</span>
+              <md-field :class="getValidationClass('register_token')">
+                <label for="token">{{ $t("form.registerToken") }}</label>
+                <md-input name="token" id="token" autocomplete="token" v-model="form.register_token"/>
+                <span class="md-error" v-if="!$v.form.register_token.required">{{ $t("validation.required") }}</span>
               </md-field>
             </div>
           </div>
@@ -88,8 +90,7 @@ import {
   required,
   minLength,
   maxLength,
-  sameAs,
-  email
+  sameAs
 } from 'vuelidate/lib/validators'
 
 export default {
@@ -101,7 +102,7 @@ export default {
       username: null,
       password: null,
       passwordRepeat: null,
-      email: null
+      register_token: null
     }
   }),
   methods: {
@@ -142,6 +143,7 @@ export default {
     form: {
       username: {
         required,
+        minLength: minLength(5),
         maxLength: maxLength(25)
       },
       password: {
@@ -155,9 +157,8 @@ export default {
         maxLength: maxLength(64),
         sameAs: sameAs('password')
       },
-      email: {
-        required,
-        email: email
+      register_token: {
+        required
       }
     }
   }
