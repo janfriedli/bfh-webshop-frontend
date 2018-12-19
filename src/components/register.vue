@@ -108,19 +108,20 @@ export default {
   methods: {
     register: function () {
       this.registrationProcessing = true
-      UserService.register(this.form).then(() => {
-        this.$router.push({ name: 'login' })
-      }).catch(() => {
-        this.$notify({
-          type: 'warn',
-          position: 'top right',
-          group: 'notification',
-          title: this.$i18n.t('error'),
-          text: this.$i18n.t('notification.registrationFailed')
+      UserService.register(this.form)
+        .then(() => {
+          this.$router.push({ name: 'login' })
+        }).catch((data) => {
+          this.$notify({
+            type: 'warn',
+            position: 'top right',
+            group: 'notification',
+            title: this.$i18n.t('error'),
+            text: data.response.data.message
+          })
+        }).finally(() => {
+          this.registrationProcessing = false
         })
-      }).finally(() => {
-        this.registrationProcessing = false
-      })
     },
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]
