@@ -90,6 +90,15 @@ export default {
       img_url: null
     }
   }),
+  created () {
+    if (this.$route.params.id) {
+      ProductService.getProduct(this.$route.params.id)
+        .then(response => (this.form = response.data))
+        .catch(e => {
+          console.error(e)
+        })
+    }
+  },
   methods: {
     createProduct: function (product) {
       ProductService.createProduct(product)
@@ -155,15 +164,6 @@ export default {
             text: this.$i18n.t('notification.productNotDeleted')
           })
         })
-    },
-    created () {
-      if (this.$route.params.id) {
-        ProductService.getProduct(this.$route.params.id)
-          .then(response => (this.form = response.data))
-          .catch(e => {
-            console.error(e)
-          })
-      }
     },
     validateProduct () {
       this.$v.$touch()

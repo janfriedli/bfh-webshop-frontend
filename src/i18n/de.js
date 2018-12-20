@@ -30,7 +30,7 @@ export const de = {
     username: 'Username',
     fullName: 'Voller Name',
     street: 'Strasse',
-    form: 'PLZ',
+    zip: 'PLZ',
     country: 'Land',
     title: 'Titel',
     price: 'Preis',
