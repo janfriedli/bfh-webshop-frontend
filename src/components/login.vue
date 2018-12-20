@@ -70,7 +70,7 @@ export default {
   methods: {
     login: function () {
       this.loginProcessing = true
-      UserService.login(this.username, this.password).then(() => {
+      UserService.login(this.form.username, this.form.password).then(() => {
         this.$router.push({ name: 'items' })
       }).catch(() => {
         this.$notify({
