@@ -25,7 +25,7 @@
             <span>{{cartItem.product.quantity}} {{ $t("available") }}</span>
             <md-field>
               <label>{{ $t("quantity") }}</label>
-              <md-input v-on:change="updateCart(cartItem)" v-model.number="cartItem.quantity" type="number"></md-input>
+              <md-input v-on:change="updateCart(cartItem)" v-model.number="cartItem.quantity" type="number" min="1"></md-input>
             </md-field>
           </md-card-content>
         </md-card>

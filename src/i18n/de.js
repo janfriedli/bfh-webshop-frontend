@@ -50,7 +50,8 @@ export const de = {
     maxVal: 'Max {max}',
     noUrl: 'Keine gültige URL',
     notEqual: 'Passwörter sind nicht gleich',
-    email: 'Keine gültige Email'
+    email: 'Keine gültige Email',
+    wrongQuantity: "Nicht möglich"
   },
   notification: {
     error: 'Fehler',

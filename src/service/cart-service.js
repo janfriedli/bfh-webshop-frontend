@@ -10,13 +10,17 @@ export default class CartService {
    */
   static addToCart (product, buyerQuantity) {
     let cart = this.getCart()
-
-    if (cart[product.id]) {
-      cart[product.id].quantity = parseInt(cart[product.id].quantity) + parseInt(buyerQuantity)
+    console.log(parseInt(cart[product.id].quantity) + parseInt(buyerQuantity), product.quantity)
+    if (cart[product.id] && product.quantity < (parseInt(cart[product.id].quantity) + parseInt(buyerQuantity))) {
+      alert('Adding more is not possible')
     } else {
-      cart[product.id] = {
-        product: product,
-        quantity: parseInt(buyerQuantity)
+      if (cart[product.id]) {
+        cart[product.id].quantity = parseInt(cart[product.id].quantity) + parseInt(buyerQuantity)
+      } else {
+        cart[product.id] = {
+          product: product,
+          quantity: parseInt(buyerQuantity)
+        }
       }
     }
 
@@ -43,6 +47,12 @@ export default class CartService {
    */
   static updateCart (product, buyerQuantity) {
     let cart = this.getCart()
+    buyerQuantity = parseInt(buyerQuantity)
+
+    if (buyerQuantity < 1) {
+      buyerQuantity = 1
+    }
+
     cart[product.id] = {
       product: product,
       quantity: parseInt(buyerQuantity)

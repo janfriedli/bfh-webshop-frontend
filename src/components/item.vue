@@ -21,9 +21,10 @@
 
       <md-card-content>
         <span>{{item.quantity}} {{ $t("available") }}</span>
-        <md-field>
+        <md-field :class="getValidationClass()">
           <label>{{ $t("quantity") }}</label>
           <md-input v-model.number="buyerQuantity" type="number"></md-input>
+          <span class="md-error" v-if="quantityError">{{ $t("validation.wrongQuantity") }}</span>
         </md-field>
       </md-card-content>
 
@@ -43,19 +44,32 @@ import CartService from '../service/cart-service'
 export default {
   name: 'item',
   data: () => ({
+    quantityError: false,
     item: null,
     buyerQuantity: 1
   }),
   methods: {
     addToCart: function (product, buyerQuantity) {
-      CartService.addToCart(product, buyerQuantity)
-      this.$notify({
-        type: 'info',
-        position: 'top right',
-        group: 'notification',
-        title: this.$i18n.t('notification.added'),
-        text: product.title + ': ' + buyerQuantity
-      })
+      if (buyerQuantity > 0 && buyerQuantity <= product.quantity) {
+        this.quantityError = false
+        CartService.addToCart(product, buyerQuantity)
+        this.$notify({
+          type: 'info',
+          position: 'top right',
+          group: 'notification',
+          title: this.$i18n.t('notification.added'),
+          text: product.title + ': ' + buyerQuantity
+        })
+      } else {
+        this.quantityError = true
+      }
+
+    },
+    getValidationClass: function () {
+      if (this.quantityError) {
+        return 'md-invalid'
+      }
+      return ''
     }
   },
   created () {
