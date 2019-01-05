@@ -10,7 +10,7 @@
             <md-empty-state
                     md-icon="shopping_basket"
                     :md-label="$t('createFirstProduct')">
-                <md-button :to="{ name: 'product' }" class="md-primary md-raised">
+                <md-button :to="{ name: 'product-edit' }" class="md-primary md-raised">
                     {{ $t("button.create") }}
                 </md-button>
             </md-empty-state>

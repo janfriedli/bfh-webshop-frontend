@@ -10,7 +10,6 @@ export default class CartService {
    */
   static addToCart (product, buyerQuantity) {
     let cart = this.getCart()
-    console.log(parseInt(cart[product.id].quantity) + parseInt(buyerQuantity), product.quantity)
     if (cart[product.id] && product.quantity < (parseInt(cart[product.id].quantity) + parseInt(buyerQuantity))) {
       alert('Adding more is not possible')
     } else {
@@ -108,5 +107,6 @@ export default class CartService {
    */
   static clear () {
     localStorage.setItem('cart', JSON.stringify({}))
+    localStorage.setItem('orderInProgress', JSON.stringify({}))
   }
 }

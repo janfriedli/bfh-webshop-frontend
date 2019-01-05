@@ -63,8 +63,10 @@ export default {
         let orderInProgress = CartService.getOrderInProgress()
         // well -> fake payment
         orderInProgress.paid = true
-        console.log(orderInProgress)
         OrderService.updateOrder(orderInProgress)
+          .then(() => {
+            CartService.clear()
+          })
           .catch(e => {
             this.$notify({
               type: 'error',
