@@ -78,7 +78,8 @@ export default {
           })
       }
 
-      if (this.countdownSeconds < 45) {
+      // random time when payment is done
+      if (this.countdownSeconds === 45) {
         CartService.clear()
       }
       if (this.countdownSeconds <= 0) {
